@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>typeSystemDescriptor</name>
+    <description>Type system for input data</description>
+    <version>1.0</version>
+    <vendor>Oleg Iskra</vendor>
+  <types>
+    <typeDescription>
+      <name>UIMATypes.Sentence</name>
+      <description>The sentence from the input data file</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    <features>
+        <featureDescription>
+          <name>id</name>
+          <description>Sentence id</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>UIMATypes.GeneMention</name>
+      <description>The mention of the gene in sentence</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    <features>
+        <featureDescription>
+          <name>Text</name>
+          <description>String of gene mention</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>UIMATypes.Token</name>
+      <description>Different types of tokens</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    <features>
+        <featureDescription>
+          <name>WordForm</name>
+          <description>The word form of token</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>PartOfSpeech</name>
+          <description>Token's part of speech</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
