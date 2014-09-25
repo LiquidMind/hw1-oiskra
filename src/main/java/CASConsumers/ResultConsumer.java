@@ -21,7 +21,7 @@ import UIMATypes.*;
 /**
  * Writes the CAS to the prescribed output format
  * "sentenceId|begin end|gene"
- * @author Oleg Iskra <oleg.iskra@gmail.com>
+ * @author <a href="mailto:oleg.iskra@gmail.com">Oleg Iskra</a>
  *
  */
 public class ResultConsumer extends CasConsumer_ImplBase {

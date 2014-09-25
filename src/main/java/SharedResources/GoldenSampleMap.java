@@ -16,7 +16,7 @@ import org.apache.uima.resource.SharedResourceObject;
 
 /**
  * Loads shared golden sample data from the golden sample source file
- * @author Oleg Iskra <oleg.iskra@gmail.com>
+ * @author <a href="mailto:oleg.iskra@gmail.com">Oleg Iskra</a>
  */
 public class GoldenSampleMap implements SharedResourceObject, IGoldenSampleMap {
 

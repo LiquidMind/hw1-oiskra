@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -34,8 +34,8 @@ import org.apache.uima.util.XMLInputSource;
  * Main Class that runs a Collection Processing Engine (CPE). This class reads a CPE Descriptor as a
  * command-line argument and instantiates the CPE. It also registers a callback listener with the
  * CPE, which will print progress and statistics to System.out.
- * 
- * 
+ *
+ *
  */
 public class SimpleRunCPE extends Thread {
   /**
@@ -55,9 +55,10 @@ public class SimpleRunCPE extends Thread {
 
   /**
    * Constructor for the class.
-   * 
+   *
    * @param args
    *          command line arguments into the program - see class description
+   * @throws Exception from internal behaviour 
    */
   public SimpleRunCPE(String args[]) throws Exception {
     mStartTime = System.currentTimeMillis();
@@ -96,7 +97,7 @@ public class SimpleRunCPE extends Thread {
   }
 
   /**
-     * 
+     *
      */
   private static void printUsageMessage() {
     System.out.println(" Arguments to the program are as follows : \n"
@@ -105,9 +106,10 @@ public class SimpleRunCPE extends Thread {
 
   /**
    * main class.
-   * 
+   *
    * @param args
    *          Command line arguments - see class description
+   * @throws Exception from internal behaviour
    */
   public static void main(String[] args) throws Exception {
     new SimpleRunCPE(args);
@@ -115,8 +117,8 @@ public class SimpleRunCPE extends Thread {
 
   /**
    * Callback Listener. Receives event notifications from CPE.
-   * 
-   * 
+   *
+   *
    */
   class StatusCallbackListenerImpl implements StatusCallbackListener {
     int entityCount = 0;
@@ -125,8 +127,8 @@ public class SimpleRunCPE extends Thread {
 
     /**
      * Called when the initialization is completed.
-     * 
-     * @see org.apache.uima.collection.processing.StatusCallbackListener#initializationComplete()
+     *
+     * @see org.apache.uima.collection.StatusCallbackListener#initializationComplete()
      */
     public void initializationComplete() {
       System.out.println("CPM Initialization Complete");
@@ -135,9 +137,9 @@ public class SimpleRunCPE extends Thread {
 
     /**
      * Called when the batchProcessing is completed.
-     * 
-     * @see org.apache.uima.collection.processing.StatusCallbackListener#batchProcessComplete()
-     * 
+     *
+     * @see org.apache.uima.collection.StatusCallbackListener#batchProcessComplete()
+     *
      */
     public void batchProcessComplete() {
       System.out.print("Completed " + entityCount + " documents");
@@ -151,8 +153,8 @@ public class SimpleRunCPE extends Thread {
 
     /**
      * Called when the collection processing is completed.
-     * 
-     * @see org.apache.uima.collection.processing.StatusCallbackListener#collectionProcessComplete()
+     *
+     * @see org.apache.uima.collection.StatusCallbackListener#collectionProcessComplete()
      */
     public void collectionProcessComplete() {
       long time = System.currentTimeMillis();
@@ -177,8 +179,8 @@ public class SimpleRunCPE extends Thread {
 
     /**
      * Called when the CPM is paused.
-     * 
-     * @see org.apache.uima.collection.processing.StatusCallbackListener#paused()
+     *
+     * @see org.apache.uima.collection.StatusCallbackListener#paused()
      */
     public void paused() {
       System.out.println("Paused");
@@ -186,8 +188,8 @@ public class SimpleRunCPE extends Thread {
 
     /**
      * Called when the CPM is resumed after a pause.
-     * 
-     * @see org.apache.uima.collection.processing.StatusCallbackListener#resumed()
+     *
+     * @see org.apache.uima.collection.StatusCallbackListener#resumed()
      */
     public void resumed() {
       System.out.println("Resumed");
@@ -195,8 +197,8 @@ public class SimpleRunCPE extends Thread {
 
     /**
      * Called when the CPM is stopped abruptly due to errors.
-     * 
-     * @see org.apache.uima.collection.processing.StatusCallbackListener#aborted()
+     *
+     * @see org.apache.uima.collection.StatusCallbackListener#aborted()
      */
     public void aborted() {
       System.out.println("Aborted");
@@ -208,7 +210,7 @@ public class SimpleRunCPE extends Thread {
     /**
      * Called when the processing of a Document is completed. <br>
      * The process status can be looked at and corresponding actions taken.
-     * 
+     *
      * @param aCas
      *          CAS corresponding to the completed processing
      * @param aStatus

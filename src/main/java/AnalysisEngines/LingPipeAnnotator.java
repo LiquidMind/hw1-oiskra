@@ -16,8 +16,8 @@ import UIMATypes.*;
 /**
  * Annotator based on LingPipe models
  * The most accurate model is GeneTag
- * @see http://alias-i.com/lingpipe/web/models.html
- * @author Oleg Iskra <oleg.iskra@gmail.com>
+ * http://alias-i.com/lingpipe/web/models.html
+ * @author <a href="mailto:oleg.iskra@gmail.com">Oleg Iskra</a>
  */
 public class LingPipeAnnotator extends JCasAnnotator_ImplBase {
 

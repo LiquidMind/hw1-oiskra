@@ -19,7 +19,7 @@ import SharedResources.*;
 
 /**
  * Evaluate precision, recall and F1 measure using file with gold samples
- * @author Oleg Iskra <oleg.iskra@gmail.com>
+ * @author <a href="mailto:oleg.iskra@gmail.com">Oleg Iskra</a>
  */
 public class EvaluationConsumer extends CasConsumer_ImplBase {
 

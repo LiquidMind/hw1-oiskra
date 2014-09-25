@@ -16,7 +16,7 @@ import UIMATypes.*;
 /**
  * Simple collection reader that reads input file with sentences
  * 
- * @author Oleg Iskra <oleg.iskra@gmail.com>
+ * @author <a href="mailto:oleg.iskra@gmail.com">Oleg Iskra</a>
  */
 public class InputReader extends CollectionReader_ImplBase {
 
