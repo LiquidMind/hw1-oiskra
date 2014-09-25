@@ -20,10 +20,13 @@ import UIMATypes.*;
 
 /**
  * Writes the CAS to the prescribed output format
+ * "sentenceId|begin end|gene"
+ * @author Oleg Iskra <oleg.iskra@gmail.com>
  *
  */
 public class ResultConsumer extends CasConsumer_ImplBase {
 
+  // Instance of BufferedWriter for common use
   private BufferedWriter bw;
 
   @Override
@@ -59,10 +62,21 @@ public class ResultConsumer extends CasConsumer_ImplBase {
     FSIterator<TOP> it = aJCas.getJFSIndexRepository().getAllIndexedFS(UIMATypes.Sentence.type);
 
     if (it.hasNext()) {
-      UIMATypes.Sentence sentence = (UIMATypes.Sentence)it.next();
+      UIMATypes.Sentence sentence = (UIMATypes.Sentence) it.next();
       sentenceId = sentence.getId();
-      //System.out.println(sentence);
+      // System.out.println(sentence);
     }
 
+    for (Annotation current : aJCas.getAnnotationIndex(Gene.type)) {
+      Gene gene = (Gene) current;
+      String line = sentenceId + "|" + gene.getBegin() + " " + gene.getEnd() + "|" + gene.getText() + "\n";
+      // Write result to output file
+      try {
+        bw.write(line);
+        bw.flush();
+      } catch (IOException e) {
+        throw new UIMARuntimeException(e);
+      }
+    }
   }
 }

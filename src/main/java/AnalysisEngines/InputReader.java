@@ -1,7 +1,5 @@
 package AnalysisEngines;
 
-
-
 import java.io.*;
 
 import org.apache.uima.UIMA_IllegalArgumentException;
@@ -17,61 +15,62 @@ import UIMATypes.*;
 
 /**
  * Simple collection reader that reads input file with sentences
- *
+ * 
+ * @author Oleg Iskra <oleg.iskra@gmail.com>
  */
 public class InputReader extends CollectionReader_ImplBase {
 
-        private BufferedReader br;
+  // Instance of BufferReader for common use
+  private BufferedReader br;
 
-        @Override
-        public void initialize()
-        {
-                // open the input file
-                String path = (String)getConfigParameterValue("InputPath");
-                try {
-                        FileReader fr = new FileReader(path);
-                        br = new BufferedReader(fr);
-                } catch (IOException e) {
-                        getLogger().log(Level.SEVERE, e.getLocalizedMessage());
-                        throw new UIMA_IllegalArgumentException();
-                }
-        }
+  @Override
+  public void initialize() {
+    // open the input file
+    String path = (String) getConfigParameterValue("InputPath");
+    try {
+      FileReader fr = new FileReader(path);
+      br = new BufferedReader(fr);
+    } catch (IOException e) {
+      getLogger().log(Level.SEVERE, e.getLocalizedMessage());
+      throw new UIMA_IllegalArgumentException();
+    }
+  }
 
-        @Override
-        public void getNext(CAS newcas) throws IOException, CollectionException {
-                // get the sentence and ID
-                try {
-                        // split key and set SOFA
-                        JCas jcas = newcas.getJCas();
-                        String[] data = br.readLine().split("\\s", 2);
-                        jcas.setSofaDataString(data[1], "text");
+  @Override
+  public void getNext(CAS newcas) throws IOException, CollectionException {
+    // get the sentence and ID
+    try {
+      // split key and set SOFA
+      JCas jcas = newcas.getJCas();
+      String[] data = br.readLine().split("\\s", 2);
+      jcas.setSofaDataString(data[1], "text");
 
-                        // annotate with sentence ID
-                        UIMATypes.Sentence sentence;
-                        sentence = new UIMATypes.Sentence(newcas.getJCas());
-                        sentence.setId(data[0]);
-                        sentence.addToIndexes();
-                } catch (CASException e) {
-                        getLogger().log(Level.SEVERE, e.getLocalizedMessage());
-                        throw new UIMA_IllegalArgumentException();
-                }
-        }
+      // annotate with sentence ID
+      UIMATypes.Sentence sentence;
+      sentence = new UIMATypes.Sentence(newcas.getJCas());
+      sentence.setId(data[0]);
+      sentence.addToIndexes();
+    } catch (CASException e) {
+      getLogger().log(Level.SEVERE, e.getLocalizedMessage());
+      throw new UIMA_IllegalArgumentException();
+    }
+  }
 
-        @Override
-        public void close() throws IOException {
-                // close the data
-                br.close();
+  @Override
+  public void close() throws IOException {
+    // close the data
+    br.close();
 
-        }
+  }
 
-        @Override
-        public Progress[] getProgress() {
-                return new Progress[0]; // cannot say progress, otherwise we have to read whole input into file
-        }
+  @Override
+  public Progress[] getProgress() {
+    return new Progress[0]; // cannot say progress, otherwise we have to read whole input into file
+  }
 
-        @Override
-        public boolean hasNext() throws IOException, CollectionException {
-                return br.ready(); // check if ready
-        }
+  @Override
+  public boolean hasNext() throws IOException, CollectionException {
+    return br.ready(); // check if ready
+  }
 
 }

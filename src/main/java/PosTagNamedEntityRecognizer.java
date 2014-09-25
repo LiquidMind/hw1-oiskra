@@ -14,10 +14,16 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 
+/*
+ * Example class, used to extract nouns from the text.
+ * Presumably some of them are gene entities. 
+ */
 public class PosTagNamedEntityRecognizer {
 
+  // Instance of StanfordCoreNLP for common use 
   private StanfordCoreNLP pipeline;
 
+  // C
   public PosTagNamedEntityRecognizer() throws ResourceInitializationException {
     Properties props = new Properties();
     props.put("annotators", "tokenize, ssplit, pos");

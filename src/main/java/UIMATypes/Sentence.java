@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** The sentence from the input data file
- * Updated by JCasGen Tue Sep 23 19:10:36 EDT 2014
+ * Updated by JCasGen Wed Sep 24 01:23:52 EDT 2014
  * XML source: D:/Projects/GitHub/hw1-oiskra/src/main/resources/typeSystemDescriptor.xml
  * @generated */
 public class Sentence extends Annotation {

@@ -18,8 +18,8 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>UIMATypes.GeneMention</name>
-      <description>The mention of the gene in sentence</description>
+      <name>UIMATypes.Gene</name>
+      <description>The substring in sentence probably with the gene</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
     <features>
         <featureDescription>
@@ -42,6 +42,33 @@
         <featureDescription>
           <name>PartOfSpeech</name>
           <description>Token's part of speech</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  <typeDescription>
+      <name>UIMATypes.GoldenSample</name>
+      <description>The golden sample to evaluate quality of annotators</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>sentenceId</name>
+          <description>The id of the sentence that goldene gene name comes from</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>begin</name>
+          <description>Begin of the gene chunk in sentence</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>end</name>
+          <description>End of the gene chunk in sentence</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>text</name>
+          <description>Text of goldene gene sample</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
       </features>
